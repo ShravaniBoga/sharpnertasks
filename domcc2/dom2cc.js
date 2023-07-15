@@ -1,102 +1,116 @@
-//  TRAVERSIING THE DOM 
+// //  TRAVERSIING THE DOM 
 
-let itemList  =document.querySelector('#items');
-// // parentnode
-// console.log(itemList.parentNode);
-// itemList.parentNode.style.backgroundColor="#f4f4f4";
-// console.log(itemList.parentNode.parentNode.parentNode);
-
-
-// // parentElement
-// console.log(itemList.parentElement);
-// itemList.parentElement.style.backgroundColor="#f4f4f4";
-// console.log(itemList.parentElement.parentElement.parentElement);
+// let itemList  =document.querySelector('#items');
+// // // parentnode
+// // console.log(itemList.parentNode);
+// // itemList.parentNode.style.backgroundColor="#f4f4f4";
+// // console.log(itemList.parentNode.parentNode.parentNode);
 
 
-
-// childNodes
-// console.log(itemList.childNodes);
-// text node represents the line break
-// so instead of childnodes we use children
-console.log(itemList.children);
-// if we use children----- if we have line-break also it dinot shoe as text node in console 
-console.log(itemList.children[1]);
-itemList.children[1].style.backgroundColor="pink";
+// // // parentElement
+// // console.log(itemList.parentElement);
+// // itemList.parentElement.style.backgroundColor="#f4f4f4";
+// // console.log(itemList.parentElement.parentElement.parentElement);
 
 
 
-
-
-// firstChild
-// console.log(itemList.firstChild);
-// first child is waste of use cant get child item 
-
-
-// // firstElementChild
-// console.log(itemList.firstElementChild);
-// itemList.firstElementChild.textContent="item 1=chicken 65";
-
-
-
-// // lastElementChild
-// console.log(itemList.lastElementChild);
-// itemList.lastElementChild.textContent="item 4=chicke biryani";
-
-
-// nextSibling
-// console.log(itemList.nextSibling)
-// nextElementSibling
-
-
-// previousSibling
-// console.log(itemList.previousSibling);
-// no use of prviousSibling it is similar to childnode 
-// it gives text node
-
-
-// // // previousElementSibling
-// console.log(itemList.previousElementSibling)   
-
-// itemList.previousElementSibling.style.color='blue';
+// // childNodes
+// // console.log(itemList.childNodes);
+// // text node represents the line break
+// // so instead of childnodes we use children
+// console.log(itemList.children);
+// // if we use children----- if we have line-break also it dinot shoe as text node in console 
+// console.log(itemList.children[1]);
+// itemList.children[1].style.backgroundColor="pink";
 
 
 
-// jquery has many features like animation and popups but js is enough in dom , by using jquery length of code will be increase , but it has diff ammazing plugins in animatin
+
+
+// // firstChild
+// // console.log(itemList.firstChild);
+// // first child is waste of use cant get child item 
+
+
+// // // firstElementChild
+// // console.log(itemList.firstElementChild);
+// // itemList.firstElementChild.textContent="item 1=chicken 65";
 
 
 
-// createElement
-
-// create a div
-var newDiv =document.createElement('div')
-
-// // add class
-newDiv.className="berry";
+// // // lastElementChild
+// // console.log(itemList.lastElementChild);
+// // itemList.lastElementChild.textContent="item 4=chicke biryani";
 
 
-// // add id
-newDiv.id="baby";
+// // nextSibling
+// // console.log(itemList.nextSibling)
+// // nextElementSibling
 
-// // add attr
-newDiv.setAttribute('title','hello Div')
 
-// create text Node
-var newDivText=document.createTextNode("this is text node")
+// // previousSibling
+// // console.log(itemList.previousSibling);
+// // no use of prviousSibling it is similar to childnode 
+// // it gives text node
+
+
+// // // // previousElementSibling
+// // console.log(itemList.previousElementSibling)   
+
+// // itemList.previousElementSibling.style.color='blue';
+
+
+
+// // jquery has many features like animation and popups but js is enough in dom , by using jquery length of code will be increase , but it has diff ammazing plugins in animatin
+
+
+
+// // createElement
+
+// // create a div
+// var newDiv =document.createElement('div')
+
+// // // add class
+// newDiv.className="berry";
+
+
+// // // add id
+// newDiv.id="baby";
+
+// // // add attr
+// newDiv.setAttribute('title','hello Div')
 
 // // create text Node
-newDiv.appendChild(newDivText)
+// var newDivText=document.createTextNode("this is text node")
 
-var container=document.querySelector('header  .container');
-var h1=document.querySelector('header h1');
+// // // create text Node
+// newDiv.appendChild(newDivText)
 
-console.log(newDiv)
-newDiv.style.fontSize='30px';
-container.insertBefore(newDiv, h1);
+// var container=document.querySelector('header  .container');
+// var h1=document.querySelector('header h1');
 
-// now it is just in js we want to insert it into the dom
+// console.log(newDiv)
+// newDiv.style.fontSize='30px';
+// container.insertBefore(newDiv, h1);
+
+// // now it is just in js we want to insert it into the dom
 
 
 
-// Now go head and add HEllo word before Item Lister
-// Now go head and add HEllo word before Item 1
+// // Now go head and add HEllo word before Item Lister
+// // Now go head and add HEllo word before Item 1
 
+// {/* <header id="main-header" class="bg-success text-white p-4 mb-3">
+//     <div class="container">
+//       <h1 id="header-title">Item Lister <span style="display:none">123</span></h1>
+//     </div> */}
+
+
+//     // // parentnode
+// // console.log(itemList.parentNode);
+// // itemList.parentNode.style.backgroundColor="#f4f4f4";
+// // console.log(itemList.parentNode.parentNode.parentNode);
+let itemList  =document.querySelector('.header-title');
+console.log(itemList.parentNode);
+itemList.parentNode.style.backgroundColor="#f4f4f4";
+console.log(itemList.parentNode.parentNode.parentNode);
