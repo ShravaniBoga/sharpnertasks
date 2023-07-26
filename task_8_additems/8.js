@@ -1,3 +1,18 @@
+// // On clicking the delete button we should be able to remove the newly created li tag
+// // Now add an edit button next to the delete icon.[Dont have to build the Edit  functionality, just add the button]
+// // DOM manipulation key takeaways that you would need and should remember. Watch this video - https://www.youtube.com/watch?v=pfT_0K07c4E
+
+
+
+
+// let form =document.getElementById('addForm');
+
+// // console.log(form)
+// // 1.location is a=rranged to create list item Elements
+// //  2. now we have to given event listener function by listening to evenets lik click or clicling on submit button ............thee event whichh we pass will occur
+// form.addEventListener('submit',addItem);
+
+
 let form =document.getElementById("addForm")
 let itemList=document.getElementById("items")
 let filter=document.getElementById('filter');
@@ -41,8 +56,30 @@ additionaLi.appendChild(document.createTextNode(newItem));
 // CREATE DELETE BUTTON ELEMENT
 let xBtn=document.createElement('button')
 
+
+// CREATE edit BUTTON ELEMENT
+let edit=document.createElement('button')
+console.log(edit)
+
+// ADD CLASSSES TO edit BUTTON
+edit.className="btn btn-danger btn-sm float-right delete";
+
+// APPEND TEXT NODE
+edit.appendChild(document.createTextNode('EDIT'));
+
+// APPEND BUTTON TO additionaLi
+additionaLi.appendChild(edit);
+
+// APPEND LI TO LIST
+itemList.appendChild(additionaLi);
+
+
+
+
 // ADD CLASSSES TO DELETE BUTTON
 xBtn.className="btn btn-danger btn-sm float-right delete";
+
+
 
 
 // APPEND TEXT NODE
@@ -93,14 +130,7 @@ Array.from(items).forEach(function(item)
 });
 
 
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
