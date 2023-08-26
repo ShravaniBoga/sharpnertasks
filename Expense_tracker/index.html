@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-check">
+        <span>
+          <label class="form-label">EXPENSE AMOUNT</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input
+            type="text"
+            id="expenseAmount"
+            class="form-control-sm"
+            name="expenseAmount"
+          />
+        </span>
+        <br />
+        <label class="form-label">DESCRIPTION</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+          type="text"
+          id="expenseDescription"
+          class="form-control-sm"
+          name="description"
+        />
+        <br />
+        <label class="form-label">CATEGORY</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <select class="form-select-sm" id="expenseCategory" name="category">
+          <option>movies</option>
+          <option>hotel</option>
+          <option>party</option>
+          <option>food</option>
+          <option>betting</option>
+          <option>hospital</option>
+        </select>
+
+        <div class="b">
+          <button id="addExpense">Submit</button>
+        </div>
+      </div>
+
+      <ul id="expenseList"></ul>
+
+      <script src="index.js"></script>
+    </div>
+  </body>
+</html>
