@@ -1,0 +1,236 @@
+<!-- ************** DONE USING PROMISES   ********* -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="saveToCrud(event)">
+      <b><label>Choose Price</label></b>
+
+      <input type="text" name="Price" id="Price" />
+
+      <b><label>Choose Dish</label></b>
+
+      <input type="text" name="Dish" id="Dish" />
+      <b><label>Chooose a Table</label></b>
+      <select name="Table" id="Table">
+        <option value="Table-1">Table-1</option>
+        <option value="Table-2">Table-2</option>
+        <option value="Table-3">Table-3</option>
+      </select>
+
+      <!-- <input type="text" name="Table" id="Table" /> -->
+      <input type="submit" id="button" value="Add to bill" />
+      <h1>Orders</h1>
+    </form>
+    <ul id="ul1">
+      <h3>Table-1</h3>
+    </ul>
+    <ul id="ul2">
+      <h3>Table-2</h3>
+    </ul>
+    <ul id="ul3">
+      <h3>Table-3</h3>
+    </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
+    <script>
+      function saveToCrud(event) {
+        event.preventDefault();
+        let Price = document.getElementById("Price").value;
+        let Dish = document.getElementById("Dish").value;
+        let Table = document.getElementById("Table").value;
+
+        let obj = {
+          Price,
+          Dish,
+          Table,
+        };
+
+        axios
+          .post(
+            "https://crudcrud.com/api/d0ddc42df218411898a1358972f19850/appointmentData",
+            obj
+          )
+          .then((response) => {
+            showUserOnScreen(response.data);
+            console.log(response);
+            // console.log("hi");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      window.addEventListener("DOMContentLoaded", () => {
+        axios
+          .get(
+            "https://crudcrud.com/api/d0ddc42df218411898a1358972f19850/appointmentData"
+          )
+
+          .then((response) => {
+            console.log(response);
+            for (let i = 0; i < response.data.length; i++) {
+              showUserOnScreen(response.data[i]);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+
+      function showUserOnScreen(obj) {
+        // ********GETTING PARENT UL'S WITH ID'S
+        let parentElem1 = document.getElementById("ul1");
+        let parentElem2 = document.getElementById("ul2");
+        let parentElem3 = document.getElementById("ul3");
+        // *****CREATING LISTiTEM AND ******GIVEING CONTENT IN LISTITEM
+        let listItem = document.createElement("li");
+        listItem.textContent = obj.Price + "-" + obj.Dish + "-" + obj.Table;
+        //    ********** CREATING AND APPENDING DELETE BUTTON TO LISTiTEM
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "DELETE";
+        listItem.appendChild(deleteBtn);
+        deleteBtn.onclick = () => {
+          let ids = obj._id;
+          axios
+            .delete(
+              "https://crudcrud.com/api/d0ddc42df218411898a1358972f19850/appointmentData" +
+                "/" +
+                ids
+            )
+            .then((response) => {
+              listItem.remove();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        };
+
+        if (obj.Table == "Table-1") {
+          parentElem1.append(listItem);
+        } else if (obj.Table == "Table-2") {
+          parentElem2.append(listItem);
+        } else {
+          parentElem3.append(listItem);
+        }
+        listItem.appendChild(deleteBtn);
+      }
+    </script>
+  </body>
+</html>
+
+<!-- *******  DONE USING ASUNC AND AWAIT   ***** -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="saveToCrud(event)">
+      <b><label>Choose Price</label></b>
+      <input type="text" name="Price" id="Price" />
+      <b><label>Choose Dish</label></b>
+      <input type="text" name="Dish" id="Dish" />
+      <b><label>Choose a Table</label></b>
+      <select name="Table" id="Table">
+        <option value="Table-1">Table-1</option>
+        <option value="Table-2">Table-2</option>
+        <option value="Table-3">Table-3</option>
+      </select>
+      <input type="submit" id="button" value="Add to bill" />
+      <h1>Orders</h1>
+    </form>
+    <ul id="ul1">
+      <h3>Table-1</h3>
+    </ul>
+    <ul id="ul2">
+      <h3>Table-2</h3>
+    </ul>
+    <ul id="ul3">
+      <h3>Table-3</h3>
+    </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
+    <script>
+      async function saveToCrud(event) {
+        event.preventDefault();
+        let Price = document.getElementById("Price").value;
+        let Dish = document.getElementById("Dish").value;
+        let Table = document.getElementById("Table").value;
+
+        let obj = {
+          Price,
+          Dish,
+          Table,
+        };
+
+        try {
+          const response = await axios.post(
+            "https://crudcrud.com/api/d0ddc42df218411898a1358972f19850/appointmentData",
+            obj
+          );
+          showUserOnScreen(response.data);
+          console.log(response);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const response = await axios.get(
+            "https://crudcrud.com/api/d0ddc42df218411898a1358972f19850/appointmentData"
+          );
+
+          console.log(response);
+          for (let i = 0; i < response.data.length; i++) {
+            showUserOnScreen(response.data[i]);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+
+      function showUserOnScreen(obj) {
+        // ********GETTING PARENT UL'S WITH ID'S
+        let parentElem1 = document.getElementById("ul1");
+        let parentElem2 = document.getElementById("ul2");
+        let parentElem3 = document.getElementById("ul3");
+        // *****CREATING LISTiTEM AND ******GIVEING CONTENT IN LISTITEM
+        let listItem = document.createElement("li");
+        listItem.textContent = obj.Price + "-" + obj.Dish + "-" + obj.Table;
+        //    ********** CREATING AND APPENDING DELETE BUTTON TO LISTiTEM
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "DELETE";
+        listItem.appendChild(deleteBtn);
+        deleteBtn.onclick = () => {
+          let ids = obj._id;
+          axios
+            .delete(
+              "https://crudcrud.com/api/d0ddc42df218411898a1358972f19850/appointmentData" +
+                "/" +
+                ids
+            )
+            .then((response) => {
+              listItem.remove();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        };
+
+        if (obj.Table == "Table-1") {
+          parentElem1.append(listItem);
+        } else if (obj.Table == "Table-2") {
+          parentElem2.append(listItem);
+        } else {
+          parentElem3.append(listItem);
+        }
+        listItem.appendChild(deleteBtn);
+      }
+    </script>
+  </body>
+</html> -->
